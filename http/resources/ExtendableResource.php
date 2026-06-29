@@ -71,8 +71,8 @@ abstract class ExtendableResource extends JsonResource
     }
 
     /**
-     * @param $name
-     * @param $value
+     * @param string $name
+     * @param mixed  $value
      */
     public function __set($name, $value)
     {
@@ -90,8 +90,8 @@ abstract class ExtendableResource extends JsonResource
     }
 
     /**
-     * @param $name
-     * @param $params
+     * @param string $name
+     * @param array  $params
      * @return mixed
      * @throws \Exception
      */

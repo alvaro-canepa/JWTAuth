@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace ReaZzon\JWTAuth\Classes\Dto;
@@ -27,11 +28,11 @@ class TokenDto
     public User $user;
 
     /**
-     * @param $data
+     * @param mixed $data
      */
     public function __construct($data)
     {
-        foreach($data as $name => $value) {
+        foreach ($data as $name => $value) {
             $this->{$name} = $value;
         }
     }
@@ -39,9 +40,9 @@ class TokenDto
     public function toArray(): array
     {
         return [
-            'token' => $this->token,
+            'token'   => $this->token,
             'expires' => $this->expires,
-            'user' => $this->user
+            'user'    => $this->user
         ];
     }
 }

@@ -1,15 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace ReaZzon\JWTAuth\Classes;
 
-use Model;
-use ReaZzon\JWTAuth\Classes\Contracts\Plugin;
-use System\Classes\PluginManager;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
-use October\Rain\Support\Traits\Singleton;
 use October\Rain\Auth\Manager as AuthManager;
+use October\Rain\Support\Traits\Singleton;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
+use ReaZzon\JWTAuth\Classes\Contracts\Plugin;
 use ReaZzon\JWTAuth\Classes\Contracts\UserPluginResolver as UserPluginResolverContract;
+use System\Classes\PluginManager;
 
 /**
  *
@@ -24,14 +24,17 @@ final class UserPluginResolver implements UserPluginResolverContract
      * Boot resolver
      *
      * @throws \SystemException
+     *
      * @return void
      */
     public function init(): void
     {
         $plugins = $this->getSupportPlugins();
-        foreach($plugins as $plugin) {
+
+        foreach ($plugins as $plugin) {
             if (PluginManager::instance()->hasPlugin($plugin['name'])) {
                 $this->plugin = $plugin;
+
                 break;
             }
         }
@@ -55,7 +58,8 @@ final class UserPluginResolver implements UserPluginResolverContract
     }
 
     /**
-     * @param $model
+     * @param mixed $model
+     *
      * @return JWTSubject
      */
     public function resolveModel($model): JWTSubject

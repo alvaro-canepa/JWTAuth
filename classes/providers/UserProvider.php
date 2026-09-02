@@ -1,6 +1,4 @@
 <?php
-declare(strict_types=1);
-
 namespace ReaZzon\JWTAuth\Classes\Providers;
 
 use Model;
@@ -139,5 +137,21 @@ class UserProvider implements BaseUserProvider
     public function validateCredentials(Authenticatable $user, array $credentials)
     {
         return false;
+    }
+
+    /**
+     * Rehash the user's password if required and supported.
+     *
+     * @param \Illuminate\Contracts\Auth\Authenticatable $user
+     * @param array                                      $credentials
+     * @param bool                                       $force
+     * @return void
+     */
+    public function rehashPasswordIfRequired(
+        Authenticatable $user,
+        #[\SensitiveParameter] array $credentials,
+        bool $force = false
+    ) {
+        // TODO: Implement rehashPasswordIfRequired() method.
     }
 }
